@@ -2,7 +2,7 @@
 
 return [
 	'host' => 'localhost',
-	'name' => 'fp',
+	'name' => 'cmst',
 	'pass' => '',
 	'user' => 'root',
 ];
