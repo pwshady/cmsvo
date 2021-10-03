@@ -44,4 +44,67 @@ class Database
 		};
 	}
 
+		/**
+	 * The function gets the level of access rights from the table by login, password and ip. In the format: module name - access level
+	 * @param Table name. Default - "". Format: string.
+	 * @param Login. Default - "". Format: string.
+	 * @param Password. Default - "". Format: string.
+	 * @param Ip. Default - "". Format: string.
+	 * @param Column name with logins. Default - "login". Format: string.
+	 * @param Column name with passwords. Default - "pass". Format: string.
+	 * @param Column name with ip. Default - "ip". Format: string.
+	 * @param Column name with module name. Default - "module_name". Format: string.
+	 * @param Column name with access level. Default - "access_level". Format: string.
+	 * @return Access level. Default - 0. Format: array.
+	 * If ip = "" only login and password are checked. Returns the access level for the first match
+	 */
+	public function getAccessLevel(
+		string $nameTable = "", 
+		string $login = "", 
+		string $pass = "", 
+		string $ip = "", 
+		string $nameColumnLogin = "login", 
+		string $nameColumnPass = "pass",
+		string $nameColumnIp = "ip",
+		string $nameColumnModuleName = "module_name",
+		string $nameColumnAccessLevel = "access_level"
+		): array
+		{
+			if ($nameTable != ""){
+				$sql = "SELECT " . $nameColumnModuleName . ", " . $nameColumnAccessLevel . " FROM " . $nameTable . "  WHERE ";
+				if ($login != ""){
+					$sql .= ($nameColumnLogin . " = :login");
+				}else{
+					return [];
+				};
+				if ($pass != ""){
+					$sql .= (" AND " . $nameColumnPass . " = :pass");
+				}else{
+					return [];
+				}
+				if ($ip != ""){
+					$sql .= " AND " . $nameColumnIp . " = :ip";
+				}
+				$stmt = $this->database->prepare($sql);
+				$stmt->bindValue(":login", $login);
+				$stmt->bindValue(":pass", $pass);
+				if ($ip != ""){
+					$stmt->bindValue(":ip", $ip);
+				}
+				try{
+					$stmt->execute();
+					$accessLevel = $stmt->fetchAll(PDO::FETCH_ASSOC);
+					if (count($accessLevel) > 0){
+						return $accessLevel;
+					}else{
+						return [];
+					}
+				}
+				catch(PDOException $e){
+					return [];
+				}
+			}
+			return [];
+		}
+
 }

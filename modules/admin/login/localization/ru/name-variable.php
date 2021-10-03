@@ -1,8 +1,8 @@
 <?php
 
-$nameAdminLoginLogin = "Логин: ";
-$nameAdminLoginPass = "Пароль: ";
-$nameAdminLoginEnter = "Вход";
-$nameAdminLoginAccessDenied = "Доступ Запрещен!";
-
+$nameLoginLogin = "Логин: ";
+$nameLoginPass = "Пароль: ";
+$nameLoginEnter = "Вход";
+$nameLoginAccessDenied = "Доступ Запрещен!";
+$nameLoginExit = "Выход";
 

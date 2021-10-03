@@ -1,7 +1,8 @@
 <?php
 
-$nameAdminLoginLogin = "Login: ";
-$nameAdminLoginPass = "Password: ";
-$nameAdminLoginEnter = "Enter";
-$nameAdminLoginAccessDenied = "Access Denied!";
+$nameLoginLogin = "Login: ";
+$nameLoginPass = "Password: ";
+$nameLoginEnter = "Enter";
+$nameLoginAccessDenied = "Access Denied!";
+$nameLoginExit = "Exit";
 

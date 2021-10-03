@@ -36,7 +36,7 @@ if(is_null($db)){
 }else{
 };
 
-$GLOBALS["page"]["instructions"] = "";
+$GLOBALS["page"]["instructions"] = [];
 $GLOBALS["page"]["header"] = "<!DOCTYPE html>" .PHP_EOL . "<header>" .PHP_EOL;
 $GLOBALS["page"]["body"] = "<body>" .PHP_EOL;
 $GLOBALS["page"]["footer"] = "<footer>" .PHP_EOL;
