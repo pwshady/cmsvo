@@ -94,3 +94,4 @@ print_r($_SESSION);
 
 $GLOBALS["page"]["body"] .= $body;
 $GLOBALS["page"]["footer"] .= "login_footer</br>" .PHP_EOL;
+
